@@ -13,24 +13,33 @@ import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
-
+import { useNavigate } from "react-router-dom";
+import {HandleNav} from "../components/HandleNav"
 export default function Menu_glowne() {
+  const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+  const zaplanowane = '/zaplanowane'
+  const mainpage = '/'
+  const logout = '/logout'
+  const historia = '/historia'
+  const konto = '/konto'
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  
   return (
     <React.Fragment>
     <Stack direction='row' spacing={2}>
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
         <Stack direction='row' spacing={2}>
-        <Button variant='contained' color='info' sx={{ minWidth: 100 }}>ZAPISZ SIĘ</Button>
-        <Button variant='contained' color='info' sx={{ minWidth: 100 }}>ZAPLANOWANE WIZYTY</Button>
-        <Button variant='contained' color='info' sx={{ minWidth: 100 }}>HISTORIA WIZYT</Button>
+        <Button variant='contained' onClick={()=>HandleNav(navigate,mainpage)} color='info' sx={{ minWidth: 100 }}>ZAPISZ SIĘ</Button>
+        <Button variant='contained' onClick={()=>HandleNav(navigate,zaplanowane)} color='info' sx={{ minWidth: 100 }}>ZAPLANOWANE WIZYTY</Button>
+        <Button variant='contained' onClick={()=>HandleNav(navigate,historia)} color='info' sx={{ minWidth: 100 }}>HISTORIA WIZYT</Button>
         </Stack>
 
         <Tooltip title="Account settings">
@@ -52,6 +61,7 @@ export default function Menu_glowne() {
         open={open}
         onClose={handleClose}
         onClick={handleClose}
+        
         PaperProps={{
           elevation: 0,
           sx: {
@@ -82,11 +92,11 @@ export default function Menu_glowne() {
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
        
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={()=>HandleNav(navigate,konto)}>
           <Avatar /> Moje konto
         </MenuItem>
         <Divider /> 
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={()=>HandleNav(navigate,logout)}>
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>

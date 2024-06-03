@@ -2,15 +2,38 @@
 import "react-datepicker/dist/react-datepicker.css";
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
+import Menu_glowne from "../components/Menu";
+import { useNavigate } from "react-router-dom";
 
 function Wyszukiwarka({intro}) {
+  
+    const navigate = useNavigate();
     const [date0, setDate0] = useState(new Date());
-    const [date1, setDate1] = useState(new Date());  
+    const [date1, setDate1] = useState(new Date());
+    function handleNav(route) {
+      
+      navigate(route)
+      console.log(route)
+    
+    };  
 return(
     
-    <section>
     <div>
-    <div class="box">
+    <div className="App-header">
+    
+      <p>
+      
+      </p>
+
+
+      <Menu_glowne>
+      </Menu_glowne>
+
+
+      </div>
+      <div>
+    <div>
+    <div className="box">
             <h5>Wybierz miasto</h5>
             <div style={{ display: 'flex', alignItems: 'center' }}>{/*  style={{ display: 'flex', alignItems: 'center' }} */}
               <h3></h3>
@@ -25,7 +48,7 @@ return(
             </div>
       </div>
 
-      <div class="box">
+      <div className="box">
             <h5>Wybierz placówkę</h5>
             <div style={{ display: 'flex', alignItems: 'center' }}>{/*  style={{ display: 'flex', alignItems: 'center' }} */}
               <h3></h3>
@@ -43,7 +66,7 @@ return(
 
 
 
-      <div class="box">
+      <div className="box">
     <div>
       <DatePicker selected={date0} onChange={(date0) => setDate0(date0)} />
     </div>
@@ -53,9 +76,10 @@ return(
    </div>
 
 
-      <div className="button">WYSZUKAJ</div>
+      <button className="button" onClick = {()=> handleNav('/terminy')} >WYSZUKAJ</button>
       </div>
-      </section>
+      </div>
+      </div>
 )
 
 }

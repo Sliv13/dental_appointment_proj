@@ -1,9 +1,22 @@
 import * as React from 'react';
-
+import Menu_glowne from '../components/Menu';
 
 export default function Konto() {
   return (
-    <section>
+    <div>
+    <div className="App-header">
+    
+      <p>
+      
+      </p>
+
+
+      <Menu_glowne>
+      </Menu_glowne>
+
+
+      </div>
+      
 <div>     
 <h3>Imię: Aldona</h3>
 <h3>Nazwisko: Anoda</h3>
@@ -12,7 +25,7 @@ export default function Konto() {
 <h3>Numer telefonu: 111111111</h3>
 <h3>Adres e-mail: aldona_anoda@gmail.com</h3>
 </div>   
-</section>
+</div>
 
   );
 }

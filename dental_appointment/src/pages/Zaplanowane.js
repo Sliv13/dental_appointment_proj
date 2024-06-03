@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
-import Pole_tekstowe from './Pole_tekstowe';
-
+import Pole_tekstowe from '../components/Pole_tekstowe';
+import Menu_glowne from '../components/Menu';
 const columns = [
   { field: 'id', headerName: 'ID', width: 70 },
   { field: 'firstName', headerName: 'Imię', width: 130 },
@@ -46,9 +46,22 @@ const rows = [
   { id: 9, lastName: 'Urbański', firstName: 'Bartosz', time: '13:35' },
 ];
 
-export default function Terminy() {
+export default function Zaplanowane() {
   return (
-    <section>
+    <div>
+    <div className="App-header">
+    
+      <p>
+      
+      </p>
+
+
+      <Menu_glowne>
+      </Menu_glowne>
+
+
+      </div>
+      <div></div>
     <div style={{ height: 400, width: '100%' }}>
       <DataGrid
         rows={rows}
@@ -71,7 +84,7 @@ export default function Terminy() {
 </br>
 
 
-</section>
+</div>
 
   );
 }
