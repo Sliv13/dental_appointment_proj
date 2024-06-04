@@ -2,7 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
-export default function Pole_tekstowe() {
+export default function Pole_tekstowe({label}) {
   return (
     <Box
       component="form"
@@ -12,7 +12,7 @@ export default function Pole_tekstowe() {
       noValidate
       autoComplete="off"
     >
-      <TextField id="outlined-basic" label="Informacja dla lekarza" variant="outlined" />
+      <TextField id="outlined-basic" label={label} variant="outlined" />
     </Box>
   );
 }

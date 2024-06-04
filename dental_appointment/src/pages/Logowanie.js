@@ -4,7 +4,7 @@ import TextField from '@mui/material/TextField';
 import { useState } from "react";
 import api from "../api";
 import { useNavigate } from "react-router-dom";
-import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants";
+import { ACCESS_TOKEN, REFRESH_TOKEN, ACCOUNT_TYPE} from "../constants";
 import CircularIndeterminate from '../components/Loading';
 
 export default function Logowanie({konto}) {
@@ -19,9 +19,19 @@ export default function Logowanie({konto}) {
 
     try {
         const res = await api.post("/api/token/", { username, password })
-        
+            console.log(res)
             localStorage.setItem(ACCESS_TOKEN, res.data.access);
             localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
+            localStorage.setItem(ACCOUNT_TYPE,res.data.group)
+            console.log(ACCOUNT_TYPE)
+            
+            if(res.data.group==='lekarz'){
+              konto='lekarz';
+            }
+            else{
+              konto='pacjent';
+            }
+            console.log('konto:',konto)
             navigate(`/${konto}`)
         
     } catch (error) {
@@ -33,7 +43,7 @@ export default function Logowanie({konto}) {
 
   return (
     <div>
-    <h1>Logujesz się na koncie {konto}a</h1>
+    <h1>Logowanie</h1>
     <form onSubmit={handleSubmit} className="form-container">
     <Box
       component="form"
@@ -63,7 +73,7 @@ export default function Logowanie({konto}) {
   </Box>
 <div >
 <CircularIndeterminate  loading={loading}/>
-<button className="button" onClick={()=>navigate("/")}id="cofnij1">COFNIJ</button>
+<button className="button" onClick={()=>navigate("/register")}id="cofnij1">ZAREJESTRU SIĘ</button>
 <button className="button" type="submit" id="zaloguj">ZALOGUJ SIĘ</button>
 
 </div>

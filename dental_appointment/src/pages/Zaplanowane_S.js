@@ -73,7 +73,7 @@ export default function Zaplanowane_S() {
           },
         }}
         pageSizeOptions={[5, 10]}
-        checkboxSelection
+        
       />
     </div>
 
@@ -83,8 +83,13 @@ export default function Zaplanowane_S() {
 </br>
 <br>
 </br>
-
-<div className="button" id="cofnij">WYBIERZ</div>
+<Pole_tekstowe label="Wykonany zabieg">
+</Pole_tekstowe>
+<br>
+</br>
+<Pole_tekstowe label="zalecenia dla pacjenta">
+</Pole_tekstowe>
+<div className="button" id="cofnij">Zakończ wizytę</div>
 
 </div>
 </div>

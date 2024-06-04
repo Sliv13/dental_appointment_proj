@@ -67,7 +67,7 @@ export default function Terminy() {
 
 <div class="box">
 <button className="button" onClick = {()=> HandleNav(navigate,'/wyszukiwarka')} id="cofnij">COFNIJ</button>
-<Pole_tekstowe>
+<Pole_tekstowe label={"Informacja dla lekarza"}>
 </Pole_tekstowe>
 <button className="button" onClick = {()=> HandleNav(navigate,'/wyszukiwarka')} id="zatwierdź">ZATWIERDŹ</button>
 </div>

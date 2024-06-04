@@ -1,8 +1,25 @@
 import * as React from 'react';
 import Menu_glowne from '../components/Menu';
-import Menu_glowne_pacjent from '../components/Menu_lekarz';
-
+import Menu_glowne_pacjent from '../components/Menu_pacjent';
+import { useEffect,useState } from 'react';
+import api from "../api";
 export default function Konto() {
+  const [User, setUser] = useState("");
+  useEffect(() => {
+    getUser();
+}, []);
+
+const getUser = () => {
+    api
+        .get("/api/user_info/")
+        .then((res) => res.data)
+        .then((data) => {
+            setUser(data);
+            console.log(data);
+        })
+        .catch((err) => alert(err));
+};
+  //console.log(User[0]['id'])
   return (
     <div>
     <div className="App-header">
@@ -19,12 +36,10 @@ export default function Konto() {
       </div>
       
 <div>     
-<h3>Imię: Aldona</h3>
-<h3>Nazwisko: Anoda</h3>
-<h3>Numer pesel: 0123456789</h3>
-<h3>Adres zamieszkania: 10-100 Anonimowo ul. Jakaś 11</h3>
-<h3>Numer telefonu: 111111111</h3>
-<h3>Adres e-mail: aldona_anoda@gmail.com</h3>
+<h3>Imię: {User[0]['first_name']}</h3>
+<h3>Nazwisko: {User[0]['last_name']}</h3>
+<h3>Adres e-mail: {User[0]['email']}</h3>
+<h3>Login:       {User[0]['username']}</h3>
 </div>   
 </div>
 

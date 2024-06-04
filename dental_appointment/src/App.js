@@ -4,8 +4,6 @@ import react from "react"
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 import ProtectedRoute from "./components/ProtectedRoute"
 import Wyszukiwarka from './pages/Wyszukiwarka';
-import Logowanie_pacjent from './pages/logowanie_pacjent';
-import Logowanie_lekarz from './pages/logowanie_lekarz';
 import Rejestracja from './pages/Rejestracja'
 import NotFound from './pages/NotFound';
 import Zaplanowane from './pages/Zaplanowane';
@@ -14,12 +12,13 @@ import Historia from './pages/Historia';
 import Konto from './pages/Konto'
 import Main_page_pacjent from './pages/main_page_pacjent';
 import Main_page_lekarz from './pages/main_page_lekarz';
-import Wybor from './pages/Wybor';
+
 import Dodaj_termin from './pages/Dodaj_termin'
 import Konto_S from './pages/Konto_S';
 import Zaplanowane_S from './pages/Zaplanowane_S';
 import Historia_S from './pages/Historia_S';
 import Wylogowano from './components/Wylogowano';
+import Logowanie from './pages/Logowanie';
 function Logout() {
   localStorage.clear()
   return (
@@ -41,7 +40,7 @@ function App() {
       <Route
         path="/pacjent"
         element={
-          <ProtectedRoute>
+          <ProtectedRoute type="pacjent">
             <Main_page_pacjent />
           </ProtectedRoute>
         }
@@ -49,7 +48,7 @@ function App() {
     <Route
         path="/lekarz"
         element={
-          <ProtectedRoute>
+          <ProtectedRoute type="lekarz">
             <Main_page_lekarz />
           </ProtectedRoute>
         }
@@ -57,7 +56,7 @@ function App() {
       <Route
         path="/Wyszukiwarka"
         element={
-          <ProtectedRoute>
+          <ProtectedRoute type="pacjent">
             <Wyszukiwarka />
           </ProtectedRoute>
         }
@@ -65,7 +64,7 @@ function App() {
       <Route
         path="/zaplanowane"
         element={
-          <ProtectedRoute>
+          <ProtectedRoute type="pacjent">
             <Zaplanowane />
           </ProtectedRoute>
         }
@@ -73,7 +72,7 @@ function App() {
       <Route
         path="/zaplanowane_s"
         element={
-          <ProtectedRoute>
+          <ProtectedRoute type="lekarz">
             <Zaplanowane_S />
           </ProtectedRoute>
         }
@@ -81,7 +80,7 @@ function App() {
       <Route
         path="/historia"
         element={
-          <ProtectedRoute>
+          <ProtectedRoute type="pacjent">
             <Historia />
           </ProtectedRoute>
         }
@@ -89,7 +88,7 @@ function App() {
       <Route
         path="/historia_s"
         element={
-          <ProtectedRoute>
+          <ProtectedRoute type="lekarz">
             <Historia_S />
           </ProtectedRoute>
         }
@@ -97,7 +96,7 @@ function App() {
       <Route
         path="/konto"
         element={
-          <ProtectedRoute>
+          <ProtectedRoute type="pacjent">
             <Konto />
           </ProtectedRoute>
         }
@@ -105,7 +104,7 @@ function App() {
       <Route
         path="/konto_s"
         element={
-          <ProtectedRoute>
+          <ProtectedRoute type="lekarz">
             <Konto_S />
           </ProtectedRoute>
         }
@@ -113,7 +112,7 @@ function App() {
       <Route
         path="/terminy"
         element={
-          <ProtectedRoute>
+          <ProtectedRoute type="pacjent">
             <Terminy />
           </ProtectedRoute>
         }
@@ -121,14 +120,12 @@ function App() {
       <Route
         path="/dodaj"
         element={
-          <ProtectedRoute>
+          <ProtectedRoute type="lekarz">
             <Dodaj_termin />
           </ProtectedRoute>
         }
       />
-      <Route path="/" element={<Wybor />} />
-      <Route path="/login_pacjent" element={<Logowanie_pacjent />} />
-      <Route path="/login_lekarz" element={<Logowanie_lekarz />} />
+      <Route path="/" element={<Logowanie konto=''/>} />
       <Route path="/logout" element={<Logout />} />
       <Route path="/register" element={<RegisterAndLogout />} />
       <Route path="*" element={<NotFound />}></Route>

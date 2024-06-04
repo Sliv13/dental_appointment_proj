@@ -1,11 +1,11 @@
 import { Navigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import api from "../api";
-import { REFRESH_TOKEN, ACCESS_TOKEN } from "../constants";
+import { REFRESH_TOKEN, ACCESS_TOKEN, ACCOUNT_TYPE } from "../constants";
 import { useState, useEffect } from "react";
 
 
-function ProtectedRoute({ children }) {
+function ProtectedRoute({ children,type }) {
     const [isAuthorized, setIsAuthorized] = useState(null);
 
     useEffect(() => {
@@ -32,6 +32,8 @@ function ProtectedRoute({ children }) {
 
     const auth = async () => {
         const token = localStorage.getItem(ACCESS_TOKEN);
+        const account_type=localStorage.getItem(ACCOUNT_TYPE)
+        console.log('halo',localStorage.getItem(ACCOUNT_TYPE),type)
         if (!token) {
             setIsAuthorized(false);
             return;
@@ -50,8 +52,8 @@ function ProtectedRoute({ children }) {
     if (isAuthorized === null) {
         return <div>Loading...</div>;
     }
-
-    return isAuthorized ? children : <Navigate to="/login" />;
+    
+    return (isAuthorized && (localStorage.getItem(ACCOUNT_TYPE)===String(type))) ? children : <Navigate to="/logout" />;
 }
 
 export default ProtectedRoute;

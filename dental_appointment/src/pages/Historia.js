@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import Pole_tekstowe from '../components/Pole_tekstowe';
-import Menu_glowne_pacjent from '../components/Menu_lekarz';
+import Menu_glowne_pacjent from '../components/Menu_pacjent';
 const columns = [
   { field: 'id', headerName: 'ID', width: 70 },
   { field: 'firstName', headerName: 'Imię', width: 130 },
