@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
-import Pole_tekstowe from './Pole_tekstowe';
-
+import Pole_tekstowe from '../components/Pole_tekstowe';
+import { useNavigate } from "react-router-dom";
+import { HandleNav } from '../components/HandleNav';
 const columns = [
   { field: 'id', headerName: 'ID', width: 70 },
   { field: 'firstName', headerName: 'Imię', width: 130 },
@@ -37,8 +38,10 @@ const rows = [
 ];
 
 export default function Terminy() {
+  const navigate = useNavigate();
+
   return (
-    <section>
+    <div>
     <div style={{ height: 400, width: '100%' }}>
       <DataGrid
         rows={rows}
@@ -63,12 +66,12 @@ export default function Terminy() {
 <h3>Zostaw wiadomość dla lekarza - pole nieobowiązkowe</h3>
 
 <div class="box">
-<div className="button" id="cofnij">COFNIJ</div>
-<Pole_tekstowe>
+<button className="button" onClick = {()=> HandleNav(navigate,'/wyszukiwarka')} id="cofnij">COFNIJ</button>
+<Pole_tekstowe label={"Informacja dla lekarza"}>
 </Pole_tekstowe>
-<div className="button" id="zatwierdź">ZATWIERDŹ</div>
+<button className="button" onClick = {()=> HandleNav(navigate,'/wyszukiwarka')} id="zatwierdź">ZATWIERDŹ</button>
 </div>
-</section>
+</div>
 
   );
 }

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
-import Pole_tekstowe from './Pole_tekstowe';
+import Pole_tekstowe from '../components/Pole_tekstowe';
+import Menu_glowne_lekarz from '../components/Menu_lekarz';
 
 const columns = [
   { field: 'id', headerName: 'ID', width: 70 },
@@ -13,20 +14,20 @@ const columns = [
     type: 'text',
     width: 90,
   },
-  
   {
-    field: 'visit',
-    headerName: 'Przebieg wizyty',
-    description: 'Przebieg wizyty',
+    field: 'notes',
+    headerName: 'Szczegóły odnośnie wizyty',
+    description: 'Inne informacje odnośnie wizyty',
     sortable: false,
     width: 300,
     //valueGetter: (value, row) => `${row.firstName || ''} ${row.lastName || ''}`,
     type: 'text',
   },
+
   {
     field: 'message',
-    headerName: 'Zalecenia od lekarza',
-    description: 'Zalecenia od lekarza',
+    headerName: 'Wiadomość od pacjenta',
+    description: 'Wysłana wiadomość od pacjenta',
     sortable: false,
     width: 300,
     //valueGetter: (value, row) => `${row.firstName || ''} ${row.lastName || ''}`,
@@ -35,7 +36,7 @@ const columns = [
 ];
 
 const rows = [
-  { id: 1, lastName: 'Kowalski', firstName: 'Jan', time: '12:30', visit: 'Wykonano leczenie kanałowe', message: 'Przyjmować lek ABC 2 razy dziennie' },
+  { id: 1, lastName: 'Kowalski', firstName: 'Jan', time: '12:30', notes: 'Zapraszamy tylko dorosłych', message: 'Jestem uczulony na lek XYZ' },
   { id: 2, lastName: 'Nowak', firstName: 'Marta', time: '13:35' },
   { id: 3, lastName: 'Kowalczyk', firstName: 'Maria', time: '13:35' },
   { id: 4, lastName: 'Wiśniewski', firstName: 'Adam', time: '13:35' },
@@ -46,9 +47,22 @@ const rows = [
   { id: 9, lastName: 'Urbański', firstName: 'Bartosz', time: '13:35' },
 ];
 
-export default function Terminy() {
+export default function Zaplanowane_S() {
   return (
-    <section>
+    <div>
+    <div className="App-header">
+    
+      <p>
+      
+      </p>
+
+
+      <Menu_glowne_lekarz>
+      </Menu_glowne_lekarz>
+
+
+      </div>
+    <div>
     <div style={{ height: 400, width: '100%' }}>
       <DataGrid
         rows={rows}
@@ -69,9 +83,15 @@ export default function Terminy() {
 </br>
 <br>
 </br>
+<Pole_tekstowe label="Wykonany zabieg">
+</Pole_tekstowe>
+<br>
+</br>
+<Pole_tekstowe label="zalecenia dla pacjenta">
+</Pole_tekstowe>
+<div className="button" id="cofnij">Zakończ wizytę</div>
 
-
-</section>
-
+</div>
+</div>
   );
 }
