@@ -5,6 +5,7 @@ import { useState } from "react";
 import api from "../api";
 import { useNavigate } from "react-router-dom";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants";
+import CircularIndeterminate from '../components/Loading';
 
 export default function Logowanie({konto}) {
   const [username, setUsername] = useState("");
@@ -56,13 +57,18 @@ export default function Logowanie({konto}) {
   >
   <TextField id="outlined-basic" label="Wpisz hasło" variant="outlined" input type="password" value={password}
                 onChange={(e) => setPassword(e.target.value)}/>
+
+
+
   </Box>
-
-
+<div >
+<CircularIndeterminate  loading={loading}/>
 <button className="button" onClick={()=>navigate("/")}id="cofnij1">COFNIJ</button>
 <button className="button" type="submit" id="zaloguj">ZALOGUJ SIĘ</button>
 
+</div>
 </form>
+
 </div>
   );
 }
