@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Menu_glowne from '../components/Menu';
+import Menu_glowne_pacjent from '../components/Menu_lekarz';
 
 export default function Konto() {
   return (
@@ -11,8 +12,8 @@ export default function Konto() {
       </p>
 
 
-      <Menu_glowne>
-      </Menu_glowne>
+      <Menu_glowne_pacjent>
+      </Menu_glowne_pacjent>
 
 
       </div>

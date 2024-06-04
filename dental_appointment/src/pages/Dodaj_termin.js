@@ -2,14 +2,27 @@
 import "react-datepicker/dist/react-datepicker.css";
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
-import DigitalClockAmPm from './Godzina';
+import DigitalClockAmPm from '../components/Godzina';
+import Menu_glowne_lekarz from "../components/Menu_lekarz";
 
-function Wyszukiwarka({intro}) {
+function Dodaj_termin({intro}) {
     const [date0, setDate0] = useState(new Date());
      
 return(
+  <div>
+  <div className="App-header">
+  
+    <p>
     
-    <section>
+    </p>
+
+
+    <Menu_glowne_lekarz>
+    </Menu_glowne_lekarz>
+
+
+    </div>
+    <div>
     <div>
     <div class="box">
             <h5>Wybierz miasto</h5>
@@ -67,11 +80,12 @@ return(
       <div className="button" id="dodaj">DODAJ</div>
       
       </div>
-      </section>
+      </div>
+      </div>
 )
 
 }
 
-export default Wyszukiwarka;
+export default Dodaj_termin;
 
 

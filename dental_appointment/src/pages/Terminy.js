@@ -66,10 +66,10 @@ export default function Terminy() {
 <h3>Zostaw wiadomość dla lekarza - pole nieobowiązkowe</h3>
 
 <div class="box">
-<button className="button" onClick = {()=> HandleNav(navigate,'/')} id="cofnij">COFNIJ</button>
+<button className="button" onClick = {()=> HandleNav(navigate,'/wyszukiwarka')} id="cofnij">COFNIJ</button>
 <Pole_tekstowe>
 </Pole_tekstowe>
-<button className="button" onClick = {()=> HandleNav(navigate,'/')} id="zatwierdź">ZATWIERDŹ</button>
+<button className="button" onClick = {()=> HandleNav(navigate,'/wyszukiwarka')} id="zatwierdź">ZATWIERDŹ</button>
 </div>
 </div>
 

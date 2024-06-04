@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import Pole_tekstowe from '../components/Pole_tekstowe';
-import Menu_glowne from '../components/Menu';
+import Menu_glowne_pacjent from '../components/Menu_lekarz';
 const columns = [
   { field: 'id', headerName: 'ID', width: 70 },
   { field: 'firstName', headerName: 'Imię', width: 130 },
@@ -56,8 +56,8 @@ export default function Historia() {
       </p>
 
 
-      <Menu_glowne>
-      </Menu_glowne>
+      <Menu_glowne_pacjent>
+      </Menu_glowne_pacjent>
 
 
       </div>

@@ -6,7 +6,7 @@ import api from "../api";
 import { useNavigate } from "react-router-dom";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants";
 
-export default function Logowanie() {
+export default function Logowanie({konto}) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -21,7 +21,7 @@ export default function Logowanie() {
         
             localStorage.setItem(ACCESS_TOKEN, res.data.access);
             localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
-            navigate("/")
+            navigate(`/${konto}`)
         
     } catch (error) {
         alert(error)
@@ -32,6 +32,7 @@ export default function Logowanie() {
 
   return (
     <div>
+    <h1>Logujesz się na koncie {konto}a</h1>
     <form onSubmit={handleSubmit} className="form-container">
     <Box
       component="form"
@@ -58,7 +59,7 @@ export default function Logowanie() {
   </Box>
 
 
-<button className="button" id="cofnij1">COFNIJ</button>
+<button className="button" onClick={()=>navigate("/")}id="cofnij1">COFNIJ</button>
 <button className="button" type="submit" id="zaloguj">ZALOGUJ SIĘ</button>
 
 </form>

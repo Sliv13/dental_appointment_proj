@@ -2,7 +2,7 @@
 import "react-datepicker/dist/react-datepicker.css";
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
-import Menu_glowne from "../components/Menu";
+import Menu_glowne_pacjent from "../components/Menu_pacjent";
 import { useNavigate } from "react-router-dom";
 
 function Wyszukiwarka({intro}) {
@@ -26,8 +26,8 @@ return(
       </p>
 
 
-      <Menu_glowne>
-      </Menu_glowne>
+      <Menu_glowne_pacjent>
+      </Menu_glowne_pacjent>
 
 
       </div>
