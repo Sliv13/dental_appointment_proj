@@ -4,7 +4,7 @@ import Menu_glowne_pacjent from '../components/Menu_pacjent';
 import { useEffect,useState } from 'react';
 import api from "../api";
 export default function Konto() {
-  const [User, setUser] = useState("");
+  const [User, setUser] = useState(null);
   useEffect(() => {
     getUser();
 }, []);
@@ -19,7 +19,8 @@ const getUser = () => {
         })
         .catch((err) => alert(err));
 };
-  //console.log(User[0]['id'])
+  console.log(User)
+  if( User!==null){
   return (
     <div>
     <div className="App-header">
@@ -43,7 +44,7 @@ const getUser = () => {
 </div>   
 </div>
 
-  );
+  );}
 }
 
 

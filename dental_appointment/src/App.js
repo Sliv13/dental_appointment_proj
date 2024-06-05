@@ -105,7 +105,7 @@ function App() {
         path="/konto_s"
         element={
           <ProtectedRoute type="lekarz">
-            <Konto_S />
+            <Konto />
           </ProtectedRoute>
         }
       />

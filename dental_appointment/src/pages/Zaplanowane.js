@@ -2,36 +2,19 @@ import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import Pole_tekstowe from '../components/Pole_tekstowe';
 import Menu_glowne_pacjent from '../components/Menu_pacjent';
+import { useState,useEffect } from 'react';
+import api from '../api';
 const columns = [
   { field: 'id', headerName: 'ID', width: 70 },
-  { field: 'firstName', headerName: 'Imię', width: 130 },
-  { field: 'lastName', headerName: 'Nazwisko', width: 130 },
-  {
-    field: 'time',
-    headerName: 'Godzina',
-    //type: 'number',
-    type: 'text',
-    width: 90,
-  },
-  {
-    field: 'notes',
-    headerName: 'Szczegóły odnośnie wizyty',
-    description: 'Inne informacje odnośnie wizyty',
-    sortable: false,
-    width: 300,
-    //valueGetter: (value, row) => `${row.firstName || ''} ${row.lastName || ''}`,
-    type: 'text',
-  },
-
-  {
-    field: 'message',
-    headerName: 'Wiadomość do lekarza',
-    description: 'Wysłana wiadomość do lekarza',
-    sortable: false,
-    width: 300,
-    //valueGetter: (value, row) => `${row.firstName || ''} ${row.lastName || ''}`,
-    type: 'text',
-  },
+  { field: 'placowka', headerName: 'placowka', width: 130 },
+  { field: 'miasto', headerName: 'miasto', width: 130 },
+  { field: 'lekarz', headerName: 'lekarz', width: 130 },
+  { field: 'pacjent', headerName: 'pacjent', width: 130 },
+  { field: 'data', headerName: 'data', width: 130 },
+  { field: 'godzina', headerName: 'godzina', width: 130 },
+  { field: 'szczegoly', headerName: 'szczegoly', width: 130, type:'text'},
+  { field: 'wiadomosc_dla_lekarza', headerName: 'wiadomosc_dla_lekarza', width: 40,type:'text' },
+  
 ];
 
 const rows = [
@@ -47,6 +30,24 @@ const rows = [
 ];
 
 export default function Zaplanowane() {
+  const [Terminy, setTerminy] = useState([]);
+  useEffect(() => {
+    getTermin();
+}, []);
+
+const getTermin = () => {
+  
+    api
+        .get("/api/terminy/planned/")
+        .then((res) => res.data)
+        .then((data) => {
+            setTerminy(data);
+            console.log(data);
+        })
+        .catch((err) => alert(err));
+        console.log(Terminy)
+      
+};
   return (
     <div>
     <div className="App-header">
@@ -64,7 +65,7 @@ export default function Zaplanowane() {
       <div></div>
     <div style={{ height: 400, width: '100%' }}>
       <DataGrid
-        rows={rows}
+        rows={Terminy}
         columns={columns}
         initialState={{
           pagination: {

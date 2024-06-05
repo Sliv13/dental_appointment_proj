@@ -4,7 +4,8 @@ import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import DigitalClockAmPm from '../components/Godzina';
 import Menu_glowne_lekarz from "../components/Menu_lekarz";
-
+import Pole_tekstowe from "../components/Pole_tekstowe";
+import { Box } from "@mui/material";
 function Dodaj_termin({intro}) {
     const [date0, setDate0] = useState(new Date());
      
@@ -39,20 +40,7 @@ return(
             </div>
       </div>
 
-      <div class="box">
-            <h5>Wybierz placówkę</h5>
-            <div style={{ display: 'flex', alignItems: 'center' }}>{/*  style={{ display: 'flex', alignItems: 'center' }} */}
-              <h3></h3>
-              <select className="choose_emotion" name="emotion">
-                <option value="neutral">Gabinet 1</option>
-                <option value="happy">Gabinet 2</option>
-                <option value="sad">Gabinet 3</option>
-                <option value="angry">Gabinet 4</option>
-                <option value="fear">Gabinet 5</option>
-                <option value="disgust">Gabinet 6</option>
-              </select>
-            </div>
-      </div>
+      
 
 
 
@@ -74,11 +62,33 @@ return(
     </DigitalClockAmPm>
     </div>
    </div>
-
-   
-   
-      <div className="button" id="dodaj">DODAJ</div>
-      
+<br>
+</br>
+<br>
+</br>
+<br>
+</br>
+<br>
+</br>
+<br>
+</br>
+<br>
+</br>
+<br>
+</br><br>
+</br><br>
+</br>
+<br>
+</br>
+<br>
+</br>
+<Box>
+   <div className="box">
+   <Pole_tekstowe label={"Szczegóły"}>
+</Pole_tekstowe>
+      <button className="button" id="dodaj">DODAJ</button>
+      </div>
+      </Box>
       </div>
       </div>
       </div>

@@ -2,51 +2,39 @@ import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import Pole_tekstowe from '../components/Pole_tekstowe';
 import Menu_glowne_pacjent from '../components/Menu_pacjent';
+import { useState,useEffect } from 'react';
+import api from '../api';
 const columns = [
   { field: 'id', headerName: 'ID', width: 70 },
-  { field: 'firstName', headerName: 'Imię', width: 130 },
-  { field: 'lastName', headerName: 'Nazwisko', width: 130 },
-  {
-    field: 'time',
-    headerName: 'Godzina',
-    //type: 'number',
-    type: 'text',
-    width: 90,
-  },
-  
-  {
-    field: 'visit',
-    headerName: 'Przebieg wizyty',
-    description: 'Przebieg wizyty',
-    sortable: false,
-    width: 300,
-    //valueGetter: (value, row) => `${row.firstName || ''} ${row.lastName || ''}`,
-    type: 'text',
-  },
-  {
-    field: 'message',
-    headerName: 'Zalecenia od lekarza',
-    description: 'Zalecenia od lekarza',
-    sortable: false,
-    width: 300,
-    //valueGetter: (value, row) => `${row.firstName || ''} ${row.lastName || ''}`,
-    type: 'text',
-  },
-];
-
-const rows = [
-  { id: 1, lastName: 'Kowalski', firstName: 'Jan', time: '12:30', visit: 'Wykonano leczenie kanałowe', message: 'Przyjmować lek ABC 2 razy dziennie' },
-  { id: 2, lastName: 'Nowak', firstName: 'Marta', time: '13:35' },
-  { id: 3, lastName: 'Kowalczyk', firstName: 'Maria', time: '13:35' },
-  { id: 4, lastName: 'Wiśniewski', firstName: 'Adam', time: '13:35' },
-  { id: 5, lastName: 'Zawadzki', firstName: 'Janusz', time: '13:35' },
-  { id: 6, lastName: 'Zielińska', firstName: 'Paulina', time: '13:35' },
-  { id: 7, lastName: 'Urbański', firstName: 'Bartosz', time: '13:35' },
-  { id: 8, lastName: 'Urbański', firstName: 'Bartosz', time: '13:35' },
-  { id: 9, lastName: 'Urbański', firstName: 'Bartosz', time: '13:35' },
+  { field: 'placowka', headerName: 'placowka', width: 130 },
+  { field: 'miasto', headerName: 'miasto', width: 130 },
+  { field: 'lekarz', headerName: 'lekarz', width: 130 },
+  { field: 'pacjent', headerName: 'pacjent', width: 130 },
+  { field: 'data', headerName: 'data', width: 130 },
+  { field: 'godzina', headerName: 'godzina', width: 130 },
+  { field: 'szczegoly', headerName: 'Przebieg wizyty', width: 130, type:'text'},
+  { field: 'wiadomosc_dla_lekarza', headerName: 'zalecenia od lekarza', width: 40,type:'text' },
 ];
 
 export default function Historia() {
+  const [Terminy, setTerminy] = useState([]);
+  useEffect(() => {
+    getTermin();
+}, []);
+
+const getTermin = () => {
+  
+    api
+        .get("/api/terminy/history/")
+        .then((res) => res.data)
+        .then((data) => {
+            setTerminy(data);
+            console.log(data);
+        })
+        .catch((err) => alert(err));
+        console.log(Terminy)
+      
+};
   return (
     <div>
     <div className="App-header">
@@ -64,7 +52,7 @@ export default function Historia() {
       <div>
     <div style={{ height: 400, width: '100%' }}>
       <DataGrid
-        rows={rows}
+        rows={Terminy}
         columns={columns}
         initialState={{
           pagination: {
